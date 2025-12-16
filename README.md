@@ -48,9 +48,10 @@ Your session cookie (`li_at`) is what keeps you logged into LinkedIn. Here's how
 ### Clone the repository
 
 ```bash
-mkdir ~/linkedin-mcp-server
+git clone https://github.com/BharathSD/LinkedIn-MCP-Server.git ~/linkedin-mcp-server
 cd ~/linkedin-mcp-server
 ```
+
 
 ### Install Dependencies
 
