@@ -52,27 +52,89 @@ git clone https://github.com/BharathSD/LinkedIn-MCP-Server.git ~/linkedin-mcp-se
 cd ~/linkedin-mcp-server
 ```
 
+### Virtual environment (recommended)
+
+Create and activate a virtual environment to avoid polluting your system Python:
+
+- macOS / Linux:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+- Windows (Command Prompt):
+
+```cmd
+python -m venv .venv
+.\\.venv\\Scripts\\activate.bat
+```
+
+- Windows (PowerShell):
+
+```powershell
+python -m venv .venv
+.\\.venv\\Scripts\\Activate.ps1
+```
+
+After activating, upgrade pip:
+
+```bash
+python -m pip install --upgrade pip
+```
 
 ### Install Dependencies
 
-Create `requirements.txt`:
+First check whether the repository already includes a requirements file or other packaging (requirements.txt, pyproject.toml, Pipfile). If a requirements.txt is present, use it. If not, create a local requirements.txt for convenience.
+
+Example requirements.txt (only if the repo doesn't already provide one):
 
 ```
 mcp>=0.9.0
 httpx>=0.27.0
 ```
 
-Install:
+Install using the Python module form to ensure the correct interpreter is used:
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 Or install directly:
 
 ```bash
-pip install mcp httpx
+python -m pip install mcp httpx
 ```
+
+Notes:
+- Be explicit with `python -m pip` to avoid accidentally using a different Python/pip (some systems have multiple versions).
+- Consider pinning exact versions for reproducible installs if you encounter compatibility issues.
+
+### Run / test the server locally
+
+If you want to run the server locally before configuring Claude Desktop, set the environment variable and start the server (example):
+
+- macOS / Linux:
+
+```bash
+export LINKEDIN_SESSION_COOKIE="paste_your_li_at_cookie_value_here"
+python3 server.py
+```
+
+- Windows (Command Prompt):
+
+```cmd
+set LINKEDIN_SESSION_COOKIE=paste_your_li_at_cookie_value_here && python server.py
+```
+
+- Windows (PowerShell):
+
+```powershell
+$env:LINKEDIN_SESSION_COOKIE = "paste_your_li_at_cookie_value_here"
+python server.py
+```
+
+Look at the console/log output for confirmation that the server started and is listening. If server.py needs executable permission on Unix, you can run `chmod +x server.py` or run it with the python interpreter as shown above.
 
 ---
 
@@ -269,7 +331,7 @@ Common issues:
 1. **Python not found**: Install Python from [python.org](https://python.org)
 2. **Path issues on Windows**: Use double backslashes `\\` in paths
 3. **Permission denied**: Make sure the file is readable
-4. **Module not found**: Run `pip install mcp httpx` again
+4. **Module not found**: Run `python -m pip install mcp httpx` again
 
 Still stuck? Check:
 - Claude Desktop version is up to date
