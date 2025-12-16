@@ -43,18 +43,14 @@ Your session cookie (`li_at`) is what keeps you logged into LinkedIn. Here's how
 
 ---
 
-## Step 2: Install the Server
+## Step 2: Clone the repository and setup server
 
-### Create Directory
+### Clone the repository
 
 ```bash
 mkdir ~/linkedin-mcp-server
 cd ~/linkedin-mcp-server
 ```
-
-### Save the Server Code
-
-Save the Python code as `server.py` in this directory.
 
 ### Install Dependencies
 
